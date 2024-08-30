@@ -1,4 +1,6 @@
 # GKGNet
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/gkgnet-group-k-nearest-neighbor-based-graph/multi-label-classification-on-pascal-voc-2007)](https://paperswithcode.com/sota/multi-label-classification-on-pascal-voc-2007?p=gkgnet-group-k-nearest-neighbor-based-graph)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/gkgnet-group-k-nearest-neighbor-based-graph/multi-label-classification-on-ms-coco)](https://paperswithcode.com/sota/multi-label-classification-on-ms-coco?p=gkgnet-group-k-nearest-neighbor-based-graph)
 ## Introduction
 
 This repo contains the official PyTorch implementation of our ECCV'2024 paper

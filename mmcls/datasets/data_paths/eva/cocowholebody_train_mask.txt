@@ -1,0 +1,19 @@
+在该模板中，只有 **value** 这一列 以及下面的**简介**需要提供者自己修改 
+
+|<div style="width:100px"></div> | <div style="width:100px"></div>| <div style="width:100px"></div>|
+| :-----: | :-----: |:-----: |
+| key | value | 注释 |
+| author | wangjiahang1 | 填写自己名字，和LDAP名字对应，如zhangsan1 |
+| dataset name | cocowholebody_train_mask | 数据集名字 |
+| 版本号 | v0 | 数据集可能有多个版本，我们从v0 开始累加 | 
+| 支持项目 |  | 请自己注意一下，看看eva是否已经存在了该项目，如果已经存在，请延续之前的项目名称，(因为IMX500, imx500会被当做两个项目) | 
+| 数据集类型 | 人体2D检测，全身框，人体属性, 脸框, 肢体关键点 | 数据集类型是比较重要的划分指标，目前我们已经涵盖了：(人体/人脸/人手/动物/物体) / (2D/3D) / (关键点/检测/Mesh) 等数据集类型，这个是比较 High Level 的索引|
+| 数据集标签 | 室外，行人 | 关键词是数据集更精细的划分，包括室内，室外，足球，单人，多人，视频，手势等 | 
+| 标注json |  SH40:/mnt/lustre/share/wangjiahang1/FakeFace/mscoco2017/train2017/coco_wholebody_train_v1.0_mask_v1.json | 中间只用 br 命令来换行 |
+| 图片集群路径 | SH40:/mnt/lustre/share/wangjiahang1/FakeFace/mscoco2017/train2017/train2017_mask | - |
+| Ceph prefix | sh1985:s3://fakeface/COCO/train2017_mask/ | 这里要保证ceph_prefix + json里面的 ['image_file']可以被ceph访问|
+| Sense bee | | 如果没有就填空，但是有的话一定要补充上 | 
+
+数据集简介(数据集简介非常重要，需要说明数据集怎么采集标注的。可以参考采集文档，进行填写。内容包括：采集的人数，采集的要求：服装、视角、环境；有哪些方面是有隐藏问题的，数据集被训练是为了解决什么场景，有没什么坑等):
+
+是cocowholebody的原始数据，通过[虚拟数据合成系统](https://confluence.sensetime.com/display/AR3DDevice/Face-Masker-Autolink)，添加口罩后的版本。
