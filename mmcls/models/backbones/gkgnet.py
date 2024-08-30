@@ -21,8 +21,8 @@ from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.models.layers import DropPath
 
 
-norm_cfg=dict(type='SyncBN', requires_grad=True)
-# norm_cfg=dict(type='BN', requires_grad=True)
+# norm_cfg=dict(type='SyncBN', requires_grad=True)
+norm_cfg=dict(type='BN', requires_grad=True)
 def _cfg(url='', **kwargs):
     return {
         'url': url,

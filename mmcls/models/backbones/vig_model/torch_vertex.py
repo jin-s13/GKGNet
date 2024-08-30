@@ -11,8 +11,8 @@ from timm.models.layers import DropPath
 from mmcv.cnn import (ConvModule, build_conv_layer, build_norm_layer,
                       constant_init)
 # import torch_geometric as tg
-norm_cfg=dict(type='SyncBN', requires_grad=True)
-# norm_cfg=dict(type='BN', requires_grad=True)
+# norm_cfg=dict(type='SyncBN', requires_grad=True)
+norm_cfg=dict(type='BN', requires_grad=True)
 class GraphAtten(nn.Module):
     """
     Max-Relative Graph Convolution (Paper: https://arxiv.org/abs/1904.03751) for dense data type

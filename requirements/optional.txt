@@ -1,2 +1,9 @@
 albumentations>=0.3.2
 requests
+easydict
+scipy
+scikit-learn
+yapf==0.40.1
+numpy==1.23.5
+tensorboard
+setuptools==59.5.0
