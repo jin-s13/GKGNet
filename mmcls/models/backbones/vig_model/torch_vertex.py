@@ -11,8 +11,8 @@ from timm.models.layers import DropPath
 from mmcv.cnn import (ConvModule, build_conv_layer, build_norm_layer,
                       constant_init)
 # import torch_geometric as tg
-# norm_cfg=dict(type='SyncBN', requires_grad=True)
-norm_cfg=dict(type='BN', requires_grad=True)
+norm_cfg=dict(type='SyncBN', requires_grad=True)
+# norm_cfg=dict(type='BN', requires_grad=True)
 class GraphAtten(nn.Module):
     """
     Max-Relative Graph Convolution (Paper: https://arxiv.org/abs/1904.03751) for dense data type
@@ -202,7 +202,7 @@ class DyGraphConv2dMultiGroup(GraphConv2d):
         x = x.reshape(B*self.num_head, dim_per_head, -1, 1).contiguous()
         edge_index = self.dilated_knn_graph(x, y, relative_pos)
         x = super(DyGraphConv2dMultiGroup, self).forward(x, edge_index, y)
-        return x.reshape(B, -1, H, W).contiguous()
+        return x.reshape(B, -1, H, W).contiguous(),edge_index
 class DyGraphConv2d(GraphConv2d):
     """
     Dynamic graph convolution layer

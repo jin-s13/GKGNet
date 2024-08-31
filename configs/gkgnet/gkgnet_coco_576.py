@@ -79,7 +79,7 @@ test_pipeline = [
 ]
 sampler = dict(type='RepeatAugSampler')
 data = dict(
-    samples_per_gpu=6,
+    samples_per_gpu=16,
     workers_per_gpu=1,
     train=
     dict(

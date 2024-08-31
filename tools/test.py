@@ -177,47 +177,9 @@ def main():
     fp16_cfg = cfg.get('fp16', None)
     if fp16_cfg is not None:
         wrap_fp16_model(model)
-    # checkpoint = load_checkpoint(model, args.checkpoint, map_location='cpu',revise_keys=[(r'^', 'backbone.')])
+
     checkpoint = load_checkpoint(model, args.checkpoint, map_location='cpu' )
 
-
-    # for key in checkpoint['state_dict'].keys():
-    #     if 'ema' in key:
-    #         continue
-    #     name_new=f"ema_{key.replace('.', '_')}"
-    #     if name_new in checkpoint['state_dict'].keys():
-    #         checkpoint['state_dict'][key] = checkpoint['state_dict'][name_new]
-    #     else:
-    #         print('not in checkpoint:',key)
-    # start_epoch = int(args.checkpoint.split('/')[-1].split('.')[0].split('_')[-1])
-    # print('start_epoch:',start_epoch)
-    # num_epochs = args.ne
-    # for i in range(1,num_epochs):
-    #     print('join epoch_{}.pth'.format(start_epoch+i))
-    #     checkpoint_name = ('/').join(
-    #         args.checkpoint.split('/')[:-1]) + '/' + 'epoch_{}.pth'.format(
-    #         start_epoch + i)
-    #     checkpoint_temp = load_checkpoint(model, checkpoint_name, map_location='cpu' )
-    #     for key in checkpoint_temp['state_dict'].keys():
-    #         if 'ema' in key:
-    #             continue
-    #         name_new = f"ema_{key.replace('.', '_')}"
-    #         if name_new in checkpoint['state_dict'].keys():
-    #             checkpoint_temp['state_dict'][key] = checkpoint_temp['state_dict'][
-    #                 name_new]
-    #     for key in checkpoint_temp['state_dict'].keys():
-    #         checkpoint['state_dict'][key] = checkpoint_temp['state_dict'][key]+checkpoint['state_dict'][key]
-    # for key in checkpoint['state_dict'].keys():
-    #     checkpoint['state_dict'][key] = checkpoint['state_dict'][key]/num_epochs
-    # load_state_dict(model, checkpoint['state_dict'])
-    # save_checkpoint={}
-    # for key in checkpoint['state_dict'].keys():
-    #     if 'ema' in key:
-    #         continue
-    #     else:
-    #         save_checkpoint[key]=checkpoint['state_dict'][key]
-
-    #save checkpoint
     if 'CLASSES' in checkpoint.get('meta', {}):
         CLASSES = checkpoint['meta']['CLASSES']
     else:
@@ -264,18 +226,6 @@ def main():
                 else:
                     raise ValueError(f'Unsupport metric type: {type(v)}')
                 print(f'\n{k} : {v}')
-
-        # # open a txt file and add the results at the end of the file
-        # save_pth_name = './save_average_pth/' + 'strart_{}_num_{}_acc_{}.pth'.format(
-        #     start_epoch, num_epochs,str(round(eval_results['accuracy_top-1'],2)))
-        # checkpoint['state_dict'] = save_checkpoint
-        # torch.save(checkpoint, save_pth_name)
-        # if args.outtxt:
-        #     with open(args.outtxt, 'a') as f:
-        #         f.write('\n')
-        #         f.write(str(start_epoch)+'  '+str(args.ne)+'  '+str(eval_results['accuracy_top-1'])+'  '+str(eval_results['accuracy_top-5']))
-        #         f.write('\n')
-
 
         if args.out:
             if 'none' not in args.out_items:

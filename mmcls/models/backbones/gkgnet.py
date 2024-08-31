@@ -20,9 +20,8 @@ from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 
 from timm.models.layers import DropPath
 
-
-# norm_cfg=dict(type='SyncBN', requires_grad=True)
-norm_cfg=dict(type='BN', requires_grad=True)
+norm_cfg=dict(type='SyncBN', requires_grad=True)
+# norm_cfg=dict(type='BN', requires_grad=True)
 def _cfg(url='', **kwargs):
     return {
         'url': url,
@@ -273,7 +272,7 @@ class GKGNet(BaseBackbone):
             if i in self.layer_index:
                 for k in range(len(self.gcn_label[j])):
                     init_label_embeddings,edge_index=self.gcn_label[j][k](init_label_embeddings,x)
-                if j<3 and self.use_low_feature:
+                if j<3:
                     init_label_embeddings=self.ffn_label[j](init_label_embeddings)
                 j+=1
         features_gap=torch.flatten(self.gap(x), 1)

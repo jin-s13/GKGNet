@@ -5,8 +5,8 @@ from torch import nn
 from torch.nn import Sequential as Seq, Linear as Lin, Conv2d
 from mmcv.cnn import (ConvModule, build_conv_layer, build_norm_layer,
                       constant_init)
-# norm_cfg=dict(type='SyncBN', requires_grad=True)
-norm_cfg=dict(type='BN', requires_grad=True)
+norm_cfg=dict(type='SyncBN', requires_grad=True)
+# norm_cfg=dict(type='BN', requires_grad=True)
 ##############################
 #    Basic layers
 ##############################
